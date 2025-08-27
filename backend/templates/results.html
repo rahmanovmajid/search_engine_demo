@@ -1,0 +1,140 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Results for "{{ query }}"</title>
+</head>
+<body>
+    <h2>Results for "{{ query }}"</h2>
+    <form action="/search" method="get">
+        <input type="text" name="q" value="{{ query }}" style="width: 300px;">
+        <button type="submit">Search</button>
+    </form>
+    <hr>
+    {% if results %}
+        {% for r in results %}
+            <div>
+                <h3><a href="{{ r.url }}" target="_blank">{{ r.title }}</a></h3>
+                <p>{{ r.snippet }}</p>
+                <small>Score: {{ r.score | round(4) }}</small>
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results for "{{ query }}"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 20px 40px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .result h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .result a {
+            text-decoration: none;
+            color: #1a0dab;
+        }
+
+        .result a:hover {
+            text-decoration: underline;
+        }
+
+        .result p {
+            margin: 10px 0;
+            color: #4d4d4d;
+        }
+
+        .score {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .no-results {
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Results for "{{ query }}"</h2>
+    <form action="/search" method="get">
+        <input type="text" name="q" value="{{ query }}" placeholder="Enter search term...">
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+
+    {% if results %}
+        {% for r in results %}
+            <div class="result">
+                <h3><a href="{{ r.url }}" target="_blank">{{ r.title }}</a></h3>
+                <p>{{ r.snippet }}</p>
+                <div class="score">Score: {{ r.score | round(4) }}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-results">No results found.</p>
+    {% endif %}
+</body>
+</html>
